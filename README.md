@@ -95,3 +95,10 @@ If you encounter iOS build issues:
 ## License
 
 This project is open source and available under the MIT License.
+
+
+C:\Users\Acer\AppData\Local\Android\Sdk\platform-tools
+C:\Users\Acer\AppData\Local\Android\Sdk\cmdline-tools\latest\bin
+C:\Users\Acer\AppData\Local\Android\Sdk\tools
+C:\Users\Acer\AppData\Local\Android\Sdk\tools\bin
+C:\Users\Acer\AppData\Local\Android\Sdk
