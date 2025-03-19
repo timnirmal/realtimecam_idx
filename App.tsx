@@ -12,7 +12,7 @@ import {
 import { pick } from '@react-native-documents/picker';
 
 // Adjust the backend URL as needed (for Android use 10.0.2.2 for localhost)
-const BACKEND_URL = Platform.OS === 'android' ? 'http://10.0.2.2:6001' : 'http://localhost:6001';
+const BACKEND_URL = Platform.OS === 'android' ? 'http://10.0.2.2:8000' : 'http://127.0.0.1:8000';
 
 function App(): React.JSX.Element {
   const [processingStatus, setProcessingStatus] = useState<string>('');
@@ -118,14 +118,14 @@ function App(): React.JSX.Element {
         name: 'uploaded_image.jpg',
       });
 
-      const response = await fetch(`${BACKEND_URL}/predict_image`, {
+      const response = await fetch(`${BACKEND_URL}/predict-face`, {
         method: 'POST',
         body: formData,
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       const result = await response.json();
       // Use the correct key from your backend response
-      setImageClassification(result.predicted_class || 'No classification');
+      setImageClassification(result.emotion || 'No classification');
       setProcessingStatus('Image classification complete.');
     } catch (error) {
       console.error('Error uploading image:', error);
@@ -146,7 +146,7 @@ function App(): React.JSX.Element {
         name: 'uploaded_audio.wav',
       });
 
-      const response = await fetch(`${BACKEND_URL}/predict`, {
+      const response = await fetch(`${BACKEND_URL}/predict-audio`, {
         method: 'POST',
         body: formData,
         headers: { 'Content-Type': 'multipart/form-data' },
